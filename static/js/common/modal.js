@@ -279,64 +279,58 @@ function userResetPasswordModalOn(menuType, targetUseId, userStatus) {
 
 // Tab menu - User Profile Modal(Common)
 function userProfileModalOn() {
-    callFindUserInfoApi().then(response => {
-        if(response.status === 200) {
-            const modalArea = document.getElementById('modalArea');
-            modalArea.innerHTML = "";
+    const modalArea = document.getElementById('modalArea');
+    modalArea.innerHTML = "";
 
-            let html = `
-                <div class="modal" id="userProfileModal">
-                    <div class="common-modal-style">
-                        <div class="modal-top">
-                            <button type="button" class="modal-close-button">
-                                <img src="/images/modal-close-mark.svg" alt="close modal button">
-                            </button>
-                        </div>
-                        <div class="modal-content">
-                            <div class="modal-title-wrap">
-                                <h3>User Profile</h3>
-                            </div>
-                            <ul class="modal-input-wrap">
-                                <li>
-                                    <h4>User Id</h4>
-                                    <input type="text" id="userId" value="${response.data.userId}" disabled>
-                                </li>
-                                <li>
-                                    <h4>First Name</h4>
-                                    <input type="text" id="firstName" value="${response.data.firstName}" autocomplete="off">
-                                </li>
-                                <li>
-                                    <h4>Last Name</h4>
-                                    <input type="text" id="lastName" value="${response.data.lastName}" autocomplete="off">  
-                                </li>
-                                <li>
-                                    <h4>Password</h4>
-                                    <div class="modal-input-button-wrap">
-                                        <button type="button" class="change-button common-button-frame" onclick="startResetPasswordSelf('${response.data.userId}', '${response.data.userStatus}')">Change</button>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="modal-validation-guide">
-                                <p id="error-message" class="error-guide-message"></p>
-                            </div>
-                            <div class="modal-two-button-wrap">
-                                <button type="button" class="common-btn-style-cancel common-button-frame modal-close-button">Cancel</button>
-                                <button type="button" class="common-btn-style-blue-deep common-button-frame" onclick="updateUserProfile();">Save</button>
-                            </div>
-                        </div>
+    let html = `
+        <div class="modal" id="userProfileModal">
+            <div class="common-modal-style">
+                <div class="modal-top">
+                    <button type="button" class="modal-close-button">
+                        <img src="static/images/modal-close-mark.svg" alt="close modal button">
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-title-wrap">
+                        <h3>User Profile</h3>
                     </div>
-                </div>`;
+                    <ul class="modal-input-wrap">
+                        <li>
+                            <h4>User Id</h4>
+                            <input type="text" id="userId">
+                        </li>
+                        <li>
+                            <h4>First Name</h4>
+                            <input type="text" id="firstName" autocomplete="off">
+                        </li>
+                        <li>
+                            <h4>Last Name</h4>
+                            <input type="text" id="lastName" autocomplete="off">  
+                        </li>
+                        <li>
+                            <h4>Password</h4>
+                            <div class="modal-input-button-wrap">
+                                <button type="button" class="change-button common-button-frame">Change</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="modal-validation-guide">
+                        <p id="error-message" class="error-guide-message"></p>
+                    </div>
+                    <div class="modal-two-button-wrap">
+                        <button type="button" class="common-btn-style-cancel common-button-frame modal-close-button">Cancel</button>
+                        <button type="button" class="common-btn-style-blue-deep common-button-frame modal-close-button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
 
-            modalArea.innerHTML= html;
-            $('#userProfileModal').show();
+    modalArea.innerHTML= html;
+    $('#userProfileModal').show();
 
-            // modal Validation Condition Clear
-            modalValidationConditionClear('#userProfileModal input[type="text"]', '#userProfileModal #error-message');
-
-            // modal close
-            modalCloseEvent('#userProfileModal');
-        }
-    })
+    $('.modal-close-button').click(function(){
+        $('#userProfileModal').hide();
+    });
 }
 
 // Login - set init password Modal(NON ACTIVE USER)

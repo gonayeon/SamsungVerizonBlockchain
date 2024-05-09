@@ -40,6 +40,12 @@
 	height: 100%;
 }
 
+.contents__button-wrap a {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+
 .common-btn-style-underline {
 	width: 11.5rem;
 }

@@ -3,44 +3,44 @@
 <head>
     <title>VZ - ASN</title>
 
-    <link rel="stylesheet" href="../static/css/common/common.css">
-    <link rel="stylesheet" href="../static/css/asn/asn.css">
+    <link rel="stylesheet" href="static/css/common/common.css">
+    <link rel="stylesheet" href="static/css/asn/asn.css">
 
-    <script src="../static/js/library/jquery-3.7.1.min.js"></script>
-    <script src="../static/js/library/moment.min.js"></script>
-    <script src="../static/js/library/daterangepicker.js"></script>
+    <script src="static/js/library/jquery-3.7.1.min.js"></script>
+    <script src="static/js/library/moment.min.js"></script>
+    <script src="static/js/library/daterangepicker.js"></script>
+    <script src="static/js/common/modal.js"></script>
 </head>
 <body>
     <main>
         <header>
-            <h1 class="header__logo-wrap"></h1>
             <h2 class="header__title">Samsung VZW JIT Blockchain Data Monitoring Portal</h2>
         </header>
 
         <section class="contents__wrap">
             <div class="contents__tab-wrap">
                 <ul class="contents__menu-tab select-wrap">
-                    <li id="tab_asn"><a href="/asn">ASN</a></li>
-                    <li id="tab_3pl-gr"><a href="/3pl-gr">3PL GR</a></li>
-                    <li id="tab_3pl-gi"><a href="/3pl-gi">3PL GI</a></li>
-                    <li id="tab_inventory"><a href="/inventory">Inventory</a></li>
-                    <li id="tab_sellout"><a href="/sellout">VZW<br>Store Sellout</a></li>
-                    <li id="tab_admin" sec:authorize="hasAuthority('ADMIN')">
+                    <li id="tab_asn"><a href="asn.html">ASN</a></li>
+                    <li id="tab_3pl-gr"><a href="3pl-gr.html">3PL GR</a></li>
+                    <li id="tab_3pl-gi"><a href="3pl-gi.html">3PL GI</a></li>
+                    <li id="tab_inventory"><a href="inventory.html">Inventory</a></li>
+                    <li id="tab_sellout"><a href="sellout.html">VZW<br>Store Sellout</a></li>
+                    <li id="tab_admin">
                         <a href="#">Admin</a>
                         <ul class="admin-page-list">
-                            <li onclick="location.href='/admin/user-management'">User</li>
-                            <li onclick="location.href='/admin/access-log'">Access Log</li>
+                            <li onclick="location.href='user-management.html'">User</li>
+                            <li onclick="location.href='access-log.html'">Access Log</li>
                         </ul>
                     </li>
                 </ul>
                 <div class="contents__button-wrap">
-                    <a href="../static/manual/manual.pdf" target="blank" class="common-btn-style-underline">
+                    <a href="static/manual/manual.pdf" target="blank" class="common-btn-style-underline">
                         <span>Manual</span>
                     </a>
-                    <button class="common-btn-style-underline" type="button" onclick="userProfileModalOn();"> <!--수정필요-->
+                    <button class="common-btn-style-underline" type="button" onclick="userProfileModalOn();">
                         <span>User Profile</span>
                     </button>
-                    <button class="common-btn-style-underline" onclick="location.href='/logout'">
+                    <button class="common-btn-style-underline">
                         <span>Logout</span>
                     </button>
                 </div>
@@ -110,7 +110,28 @@
                 </div>
             
                 <div class="table-padding-wrap">
-                    <div class="table-wrap" id="asnListArea"></div>
+                    <div class="table-wrap" id="asnListArea">
+                        <table class="common-table-style">
+                            <thead>
+                                <tr>
+                                    <th scope="col">DO ID</th>
+                                    <th scope="col">Version</th>
+                                    <th scope="col">Ext.Vendor ID</th>
+                                    <th scope="col">Shipping Date</th>
+                                    <th scope="col">Ship to City</th>
+                                    <th scope="col">Ship to State</th>
+                                    <th scope="col">Pallet Counts</th>
+                                    <th scope="col">Delivery Qty</th>
+                                    <th scope="col">Order Line<br>Number</th>
+                                    <th scope="col">SEA.SKU</th>
+                                    <th scope="col">SKU.Item<br>Counts</th>
+                                    <th scope="col">VZW SKU</th>
+                                    <th scope="col">Material Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="asn-table-body"></tbody>
+                        </table>
+                    </div>
                     <div class="table-padding-right"></div>
                     <div class="table-padding-bottom"></div>
                 </div>
@@ -144,6 +165,5 @@
     </main>
 
     <div id="modalArea"></div>
-
 </body>
 </html>

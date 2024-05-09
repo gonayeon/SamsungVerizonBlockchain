@@ -6,14 +6,6 @@ header {
 	padding: 0 1rem;
 }
 
-.header__logo-wrap {
-	display: none;
-	width: 20.5rem;
-	height: 1.8rem;
-	background: url(/images/logo.svg) center no-repeat;
-	background-size: contain;
-}
-
 .header__title {
 	font-size: 2rem;
 	font-weight: 800;
