@@ -1,0 +1,38 @@
+.sub-tab {
+	height: 4rem;
+	display: flex;
+}
+
+.sub-tab li {
+	border: 1px solid var(--color-border-gray);
+	border-bottom: 0;
+	display: table;
+	width: 15rem;
+	text-align: center;
+	background-color: var(--color-bg-gray);
+}
+
+.sub-tab li:not(:first-child) {
+	border-left: 0;
+}
+
+.sub-tab span {
+	display: table-cell;
+	vertical-align: middle;
+	color: var(--color-tab-font);
+	font-weight: 700;
+}
+
+.sub-tab li.selected {
+	background-color: var(--color-sub-blue-deep);
+	border: 0;
+}
+
+.sub-tab li.selected span {
+	color: #fff;
+}
+
+.search-guide-wrap {
+	min-height: 1.3rem;
+	margin: 0.5rem 0 0.5rem;
+}

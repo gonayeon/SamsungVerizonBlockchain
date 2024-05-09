@@ -1,0 +1,29 @@
+/* @media (max-width:1919px) and (max-height:912px) {
+    html {
+        font-size: 56%;
+    }
+}
+
+@media (max-width:1250px) and (max-height:770px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media (max-width:1100px) and (max-height:670px) {
+    html {
+        font-size: 45%;
+    }
+}
+
+@media (min-width:0) and (min-height:0) {
+    html {
+        font-size: 45%;
+    }
+} */
+
+@media (max-width:1919px) and (max-height:912px) {
+    html {
+        font-size: 1vmin;
+    }
+}

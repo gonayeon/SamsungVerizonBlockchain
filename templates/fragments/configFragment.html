@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:fragment="configFragment">
+    <!--Common Head-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon-->
+    <!-- <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" sizes="16x16"> -->
+
+    <!--Common CSS-->
+    <link rel="stylesheet" href="/css/common/daterangepicker.css">
+    <link rel="stylesheet" href="/css/common/common.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/tabmenu.css">
+    <link rel="stylesheet" href="/css/common/modal.css">
+    <link rel="stylesheet" href="/css/common/responsive.css">
+
+    <!--Common JS-->
+    <script src="/js/library/jquery-3.7.1.min.js"></script>
+    <script src="/js/library/moment.min.js"></script>
+    <script src="/js/library/daterangepicker.js"></script>
+
+    <script src="/js/common/common.js"></script>
+    <script src="/js/common/domUtils.js"></script>
+    <script src="/js/common/user-profile.js"></script>
+    <script src="/js/common/modal.js"></script>
+    <script src="/js/common/excel.js"></script>
+
+    <script th:inline="javascript">
+        const loginUserId = [[${#authentication.principal.userId}]];
+        const menuTypes = [[${menuTypes}]];
+        const userStatus = [[${userStatus}]];
+        const userRoles = [[${userRoles}]];
+        const pageNames = [[${pageNames}]];
+    </script>
+
+    <!-- content css -->
+    <th:block layout:fragment="css"></th:block>
+    <!-- content script -->
+    <th:block layout:fragment="script"></th:block>
+</head>
+
+</html>

@@ -1,0 +1,13 @@
+.sub-tab__form {
+    height: 18rem;
+    margin: 4rem 0 5.3rem;
+}
+
+.common-table-style thead th:first-child,
+.common-table-style thead th:nth-child(2) {
+    width: 17%;
+}
+
+#access-log-area td:nth-child(3) {
+    text-align: left;
+}

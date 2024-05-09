@@ -1,0 +1,152 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 300;
+    src: url("../../font/SUIT-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 400;
+    src: url("../../font/SUIT-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 500;
+    src: url("../../font/SUIT-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 600;
+    src: url("../../font/SUIT-SemiBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 700;
+    src: url("../../font/SUIT-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'SUIT';
+    font-weight: 800;
+    src: url("../../font/SUIT-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    src: url("../../font/Inter-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 600;
+    src: url("../../font/Inter-SemiBold.otf") format("opentype");
+}
+@font-face {
+    font-family: 'Inter';
+    font-weight: 900;
+    src: url("../../font/Inter-Black.otf") format("opentype");
+}
+
+
+/*  http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0 | 20110126
+    License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: 'SUIT', 맑은고딕, Arial, sans-serif, Dotum, 돋움, "Apple SD Gothic Neo", arial;
+    font-weight: 500;
+    color: var(--color-title);
+}
+img { vertical-align: top;}
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    height: 100%;
+    line-height: 1.1;
+    background-color: #fff;
+    font-size: 1.4rem;
+}
+input, button, option, select, textarea {
+    font-family: 'SUIT', 맑은고딕, Arial, sans-serif, Dotum, 돋움, "Apple SD Gothic Neo", arial;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+}
+a, button {
+    cursor: pointer;
+}
+
+:disabled {
+    cursor: auto;
+}
+
+button, input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: inherit;
+}
+
+a:link { text-decoration: none; color: inherit;}
+a:visited { text-decoration: none; color: inherit;}
+a:hover { text-decoration: none; color: inherit;}
+a:active { text-decoration: none; color: inherit;}
+
+/* 스크롤바 전체에 적용되는 스타일 */
+::-webkit-scrollbar {
+	width: 1rem; 
+    height: 1rem;
+}
+
+/* 스크롤바 트랙 */
+::-webkit-scrollbar-track {
+	background-color: var(--color-bg-gray); 
+}
+
+/* 스크롤바 슬라이더 */
+::-webkit-scrollbar-thumb {
+	background-color: var(--color-border-gray);
+}

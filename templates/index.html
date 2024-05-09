@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VZ - login</title>
+
+    <link rel="stylesheet" href="../static/css/common/common.css">
+    <link rel="stylesheet" href="../static/css/common/modal.css">
+    <link rel="stylesheet" href="../static/css/login/login.css">
+
+    <script src="../static/js/library/jquery-3.7.1.min.js"></script>
+    <!-- <script src="../static/js/common/domUtils.js"></script>
+    <script src="../static/js/common/modal.js"></script>
+    <script src="../static/js/login/login.js"></script> -->
+</head>
+<body>
+    <main id="login-page">
+        <h2>
+            Samsung - VZW JIT<br>
+            Blockchain Data Monitoring Portal
+        </h2>
+        <p class="guide">
+            Login with your User Id &#40;Samsung email address&#41;
+            
+        </p>
+        <div id="login-input-section">
+            <div class="input-form-style">
+                <label>User Id</label>
+                <input type="text" id="userId" placeholder="abcd&#64;samsung.com" autocomplete="off" autofocus>
+            </div>
+
+            <div class="input-form-style">
+                <label>Password</label>
+                <input type="password" id="userPassword" placeholder="Enter your password" autocomplete="off">
+            </div>
+
+            <button type="button" id="login-button" class="common-btn-style-blue-deep common-button-frame" onclick="location.href='asn.html'">Login</button>
+        </div>
+        <div class="guide-section">
+            <p>
+                This site is for SEA employees confidential use only.
+            </p>
+            <p>
+                If you have inquiry or password reset request,<br>
+                please email to timpaniman&#64;partner.samsung.com
+            </p>
+        </div>
+    </main>
+    <div id="modalArea"></div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>VZ - user management</title>
+
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/admin/user-management.css}">
+    </th:block>
+
+    <th:block layout:fragment="script">
+        <script type="text/javascript" th:src="@{/js/admin/user-apis.js}"></script>
+        <script type="text/javascript" th:src="@{/js/admin/user.js}"></script>
+    </th:block>
+
+</head>
+<body>
+    <div layout:fragment="contentsInner" class="contents__inner">
+        <div class="admin-content-top">
+            <p>User Management</p>
+            <div class="button-wrap" id="userButtonMenuArea">
+                <button class="user-manage-button-style" type="button" id="addUserButton" onclick="userAddModalOn();">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#2C2D2F"/>
+                        <path d="M16 12.75H8C7.59 12.75 7.25 12.41 7.25 12C7.25 11.59 7.59 11.25 8 11.25H16C16.41 11.25 16.75 11.59 16.75 12C16.75 12.41 16.41 12.75 16 12.75Z" fill="#2C2D2F"/>
+                        <path d="M12 16.75C11.59 16.75 11.25 16.41 11.25 16V8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V16C12.75 16.41 12.41 16.75 12 16.75Z" fill="#2C2D2F"/>
+                    </svg>
+                    <span>Add</span>
+                </button>
+
+                <button class="user-manage-button-style" type="button" id="editUserButton" disabled onclick="startEditUser();">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 22.75H9C3.57 22.75 1.25 20.43 1.25 15V9C1.25 3.57 3.57 1.25 9 1.25H11C11.41 1.25 11.75 1.59 11.75 2C11.75 2.41 11.41 2.75 11 2.75H9C4.39 2.75 2.75 4.39 2.75 9V15C2.75 19.61 4.39 21.25 9 21.25H15C19.61 21.25 21.25 19.61 21.25 15V13C21.25 12.59 21.59 12.25 22 12.25C22.41 12.25 22.75 12.59 22.75 13V15C22.75 20.43 20.43 22.75 15 22.75Z" fill="#2C2D2F"/>
+                        <path d="M8.50002 17.6896C7.89002 17.6896 7.33002 17.4696 6.92002 17.0696C6.43002 16.5796 6.22002 15.8696 6.33002 15.1196L6.76002 12.1096C6.84002 11.5296 7.22002 10.7796 7.63002 10.3696L15.51 2.48957C17.5 0.49957 19.52 0.49957 21.51 2.48957C22.6 3.57957 23.09 4.68957 22.99 5.79957C22.9 6.69957 22.42 7.57957 21.51 8.47957L13.63 16.3596C13.22 16.7696 12.47 17.1496 11.89 17.2296L8.88002 17.6596C8.75002 17.6896 8.62002 17.6896 8.50002 17.6896ZM16.57 3.54957L8.69002 11.4296C8.50002 11.6196 8.28002 12.0596 8.24002 12.3196L7.81002 15.3296C7.77002 15.6196 7.83002 15.8596 7.98002 16.0096C8.13002 16.1596 8.37002 16.2196 8.66002 16.1796L11.67 15.7496C11.93 15.7096 12.38 15.4896 12.56 15.2996L20.44 7.41957C21.09 6.76957 21.43 6.18957 21.48 5.64957C21.54 4.99957 21.2 4.30957 20.44 3.53957C18.84 1.93957 17.74 2.38957 16.57 3.54957Z" fill="#2C2D2F"/>
+                        <path d="M19.85 9.83027C19.78 9.83027 19.71 9.82027 19.65 9.80027C17.02 9.06027 14.93 6.97027 14.19 4.34027C14.08 3.94027 14.31 3.53027 14.71 3.41027C15.11 3.30027 15.52 3.53027 15.63 3.93027C16.23 6.06027 17.92 7.75027 20.05 8.35027C20.45 8.46027 20.68 8.88027 20.57 9.28027C20.48 9.62027 20.18 9.83027 19.85 9.83027Z" fill="#2C2D2F"/>
+                    </svg>
+                    <span>Edit</span>
+                </button>
+
+                <button class="user-manage-button-style" type="button" id="deleteUserButton" disabled onclick="userMenuConfirmModalOn(this)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.92 22.75C6.00004 22.75 1.17004 17.93 1.17004 12C1.17004 6.07 6.00004 1.25 11.92 1.25C17.84 1.25 22.67 6.07 22.67 12C22.67 17.93 17.85 22.75 11.92 22.75ZM11.92 2.75C6.82004 2.75 2.67004 6.9 2.67004 12C2.67004 17.1 6.82004 21.25 11.92 21.25C17.02 21.25 21.17 17.1 21.17 12C21.17 6.9 17.02 2.75 11.92 2.75Z" fill="#2C2D2F"/>
+                        <path d="M15.92 12.75H7.92004C7.51004 12.75 7.17004 12.41 7.17004 12C7.17004 11.59 7.51004 11.25 7.92004 11.25H15.92C16.33 11.25 16.67 11.59 16.67 12C16.67 12.41 16.34 12.75 15.92 12.75Z" fill="#2C2D2F"/>
+                    </svg>
+                    <span>Delete</span>
+                </button>
+
+                <button class="user-manage-button-style" type="button" id="lockUserButton" disabled onclick="userMenuConfirmModalOn(this)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 10.75C17.59 10.75 17.25 10.41 17.25 10V8C17.25 4.85 16.36 2.75 12 2.75C7.64 2.75 6.75 4.85 6.75 8V10C6.75 10.41 6.41 10.75 6 10.75C5.59 10.75 5.25 10.41 5.25 10V8C5.25 5.1 5.95 1.25 12 1.25C18.05 1.25 18.75 5.1 18.75 8V10C18.75 10.41 18.41 10.75 18 10.75Z" fill="#2C2D2F"/>
+                        <path d="M12 19.25C10.21 19.25 8.75 17.79 8.75 16C8.75 14.21 10.21 12.75 12 12.75C13.79 12.75 15.25 14.21 15.25 16C15.25 17.79 13.79 19.25 12 19.25ZM12 14.25C11.04 14.25 10.25 15.04 10.25 16C10.25 16.96 11.04 17.75 12 17.75C12.96 17.75 13.75 16.96 13.75 16C13.75 15.04 12.96 14.25 12 14.25Z" fill="#2C2D2F"/>
+                        <path d="M17 22.75H7C2.59 22.75 1.25 21.41 1.25 17V15C1.25 10.59 2.59 9.25 7 9.25H17C21.41 9.25 22.75 10.59 22.75 15V17C22.75 21.41 21.41 22.75 17 22.75ZM7 10.75C3.42 10.75 2.75 11.43 2.75 15V17C2.75 20.57 3.42 21.25 7 21.25H17C20.58 21.25 21.25 20.57 21.25 17V15C21.25 11.43 20.58 10.75 17 10.75H7Z" fill="#2C2D2F"/>
+                    </svg>
+                    <span>Lock</span>
+                </button>
+
+                <button class="user-manage-button-style" type="button" id="unlockUserButton" disabled onclick="userMenuConfirmModalOn(this)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 22.75H7C2.59 22.75 1.25 21.41 1.25 17V15C1.25 10.59 2.59 9.25 7 9.25H17C21.41 9.25 22.75 10.59 22.75 15V17C22.75 21.41 21.41 22.75 17 22.75ZM7 10.75C3.42 10.75 2.75 11.43 2.75 15V17C2.75 20.57 3.42 21.25 7 21.25H17C20.58 21.25 21.25 20.57 21.25 17V15C21.25 11.43 20.58 10.75 17 10.75H7Z" fill="#2C2D2F"/>
+                        <path d="M6 10.75C5.59 10.75 5.25 10.41 5.25 10V8C5.25 5.1 5.95 1.25 12 1.25C16.48 1.25 18.75 3.18 18.75 7C18.75 7.41 18.41 7.75 18 7.75C17.59 7.75 17.25 7.41 17.25 7C17.25 5.02 16.65 2.75 12 2.75C7.64 2.75 6.75 4.85 6.75 8V10C6.75 10.41 6.41 10.75 6 10.75Z" fill="#2C2D2F"/>
+                        <path d="M12 19.25C10.21 19.25 8.75 17.79 8.75 16C8.75 14.21 10.21 12.75 12 12.75C13.79 12.75 15.25 14.21 15.25 16C15.25 17.79 13.79 19.25 12 19.25ZM12 14.25C11.04 14.25 10.25 15.04 10.25 16C10.25 16.96 11.04 17.75 12 17.75C12.96 17.75 13.75 16.96 13.75 16C13.75 15.04 12.96 14.25 12 14.25Z" fill="#2C2D2F"/>
+                    </svg>
+                    <span>Unlock</span>
+                </button>
+
+                <button class="user-manage-button-style" type="button" id="resetPasswordUserButton" disabled onclick="startUserResetPassword();">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.18001 22.7499C6.08001 22.7499 5.97002 22.7399 5.88001 22.7299L3.71001 22.4299C2.67001 22.2899 1.73001 21.3599 1.57001 20.2999L1.27001 18.1099C1.17001 17.4099 1.47001 16.4999 1.97001 15.9899L6.36001 11.5999C5.65001 8.75992 6.47002 5.75992 8.56002 3.68992C11.8 0.459923 17.07 0.449923 20.32 3.68992C21.89 5.25992 22.75 7.34992 22.75 9.56992C22.75 11.7899 21.89 13.8799 20.32 15.4499C18.22 17.5299 15.23 18.3499 12.41 17.6299L8.01002 22.0199C7.59001 22.4599 6.84001 22.7499 6.18001 22.7499ZM14.43 2.75992C12.68 2.75992 10.94 3.41992 9.61001 4.74992C7.81001 6.53992 7.16001 9.15992 7.91001 11.5999C7.99001 11.8699 7.92001 12.1499 7.72001 12.3499L3.02001 17.0499C2.85001 17.2199 2.71001 17.6599 2.74001 17.8899L3.04001 20.0799C3.10001 20.4599 3.51002 20.8899 3.89001 20.9399L6.07001 21.2399C6.31001 21.2799 6.75001 21.1399 6.92001 20.9699L11.64 16.2599C11.84 16.0599 12.13 15.9999 12.39 16.0799C14.8 16.8399 17.43 16.1899 19.23 14.3899C20.51 13.1099 21.22 11.3899 21.22 9.56992C21.22 7.73992 20.51 6.02992 19.23 4.74992C17.93 3.42992 16.18 2.75992 14.43 2.75992Z" fill="#2C2D2F"/>
+                        <path d="M9.18996 20.5397C8.99996 20.5397 8.80996 20.4697 8.65996 20.3197L6.35996 18.0197C6.06996 17.7297 6.06996 17.2497 6.35996 16.9597C6.64996 16.6697 7.12996 16.6697 7.41996 16.9597L9.71996 19.2597C10.01 19.5497 10.01 20.0297 9.71996 20.3197C9.56996 20.4697 9.37996 20.5397 9.18996 20.5397Z" fill="#2C2D2F"/>
+                        <path d="M14.5 11.75C13.26 11.75 12.25 10.74 12.25 9.5C12.25 8.26 13.26 7.25 14.5 7.25C15.74 7.25 16.75 8.26 16.75 9.5C16.75 10.74 15.74 11.75 14.5 11.75ZM14.5 8.75C14.09 8.75 13.75 9.09 13.75 9.5C13.75 9.91 14.09 10.25 14.5 10.25C14.91 10.25 15.25 9.91 15.25 9.5C15.25 9.09 14.91 8.75 14.5 8.75Z" fill="#2C2D2F"/>
+                    </svg>
+                    <span>Reset<br>Password</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="table-padding-wrap">
+            <div class="table-wrap">
+                <table class="common-table-style">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="min-width-160">User Id</th>
+                            <th scope="col" class="min-width-125">First Name</th>
+                            <th scope="col" class="min-width-160">Last Name</th>
+                            <th scope="col" class="min-width-160">Created Date</th>
+                            <th scope="col" class="min-width-125">Last Access Date</th>
+                            <th scope="col" class="min-width-160">Status</th>
+                            <th scope="col" class="min-width-160">Role</th>
+                            <th scope="col" class="min-width-160">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-area"></tbody>
+                </table>
+            </div>
+            <div class="table-padding-right"></div>
+            <div class="table-padding-bottom"></div>
+        </div>
+
+        <div class="pagination-wrap">
+            <div class="spacing-wrap"></div>
+
+            <ul class="pagination" id="paginationArea"></ul>
+
+            <ul class="total-pagination">
+                <li>
+                    <span>Total<b id="totalCount">00,000</b></span>
+                </li>
+
+                <li>
+                    <div class="select-box">
+                        <div class="select-head">
+                            <span id="pageSize"></span>per page
+                        </div>
+                        <ul class="options">
+                            <li class="option">10</li>
+                            <li class="option">20</li>
+                            <li class="option">100</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

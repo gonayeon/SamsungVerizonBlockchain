@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="contents__tab-wrap">
+    <ul class="contents__menu-tab select-wrap">
+        <li id="tab_asn"><a href="/asn">ASN</a></li>
+        <li id="tab_3pl-gr"><a href="/3pl-gr">3PL GR</a></li>
+        <li id="tab_3pl-gi"><a href="/3pl-gi">3PL GI</a></li>
+        <li id="tab_inventory"><a href="/inventory">Inventory</a></li>
+        <li id="tab_sellout"><a href="/sellout">VZW<br>Store Sellout</a></li>
+        <li id="tab_admin" sec:authorize="hasAuthority('ADMIN')">
+            <a href="#">Admin</a>
+            <ul class="admin-page-list">
+                <li onclick="location.href='/admin/user-management'">User</li>
+                <li onclick="location.href='/admin/access-log'">Access Log</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="contents__button-wrap">
+        <button class="common-btn-style-underline" onclick="openManual();">
+            <span>Manual</span>
+        </button>
+        <button class="common-btn-style-underline" type="button" onclick="userProfileModalOn();">
+            <span>User Profile</span>
+        </button>
+        <button class="common-btn-style-underline" onclick="location.href='/logout'">
+            <span>Logout</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,481 @@
+@import "reset.css";
+@import "daterangepicker.css";
+@import "header.css";
+@import "tabmenu.css";
+@import "modal.css";
+@import "responsive.css";
+
+/* ===== 변수 구간 ===== */
+:root {
+    --height-header: 6.4rem;
+    --height-tab-menu-bar:5rem;
+    --width-main:128.6rem;
+
+    --color-main-title:#2C2D2F;
+    --color-title: #2c2c2c;
+    --color-primary:#969696;
+    --color-BO-gray-3:#b9b9b9;
+    --color-point-blue:#1F4D9C;
+    --color-sub-blue-deep:#6E95D8;
+    --color-sub-blue:#ADBFFF;
+    --color-bg:#F0F4FB;
+    --color-bg-gray:#F7F8F9;
+    --color-border-gray:#DBE1EB;
+    --color-tab-font-deep:#606267;
+    --color-tab-font:#D5D7DB;
+    --color-table-border:#A8ABB2;
+	--color-input-error:#F99A9A;
+	--color-text-highlighting:#FF0000;
+	--color-modal-option:#EAECF0;
+}
+
+
+/* 버튼 스타일 */
+
+.common-button-frame {
+    height: 5rem;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.common-btn-style-cancel {
+	background-color: var(--color-border-gray);
+    color: var(--color-table-border);
+}
+
+.common-btn-style-blue-deep {
+    background-color: var(--color-sub-blue-deep);
+    color: #fff;
+}
+
+.common-btn-style-gray:disabled {
+    background-color: var(--color-BO-gray-3);
+}
+
+.common-btn-style-underline {
+    background-color: transparent;
+}
+
+.common-btn-style-underline span {
+    border-bottom: 1px solid var(--color-point-blue);
+    color: var(--color-point-blue);
+	font-size: 1.4rem;
+}
+
+input[name="dates"], .select-wrap li,  .select-box {
+    cursor: pointer;
+}
+
+input[name="dates"]:disabled {
+	cursor: auto;
+}
+
+.download-button svg {
+	vertical-align: middle;
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+.download-button:disabled {
+	border-color: var(--color-border-gray);
+}
+
+.download-button:disabled span {
+	color: var(--color-border-gray);
+}
+
+.download-button:disabled path {
+	fill: var(--color-border-gray);
+}
+
+
+
+/* 공통구역 */
+main {
+	width: var(--width-main);
+	height: 100%;
+	margin: 0 auto;
+}
+
+.contents__wrap {
+	height: calc(100% - var(--height-header));
+	padding: 2.4rem 1rem;
+}
+
+.contents__inner {
+	width: 100%;
+	height: calc(100% - var(--height-tab-menu-bar));
+	padding-top: 3.5rem;
+}
+
+.sub-tab__form input,
+.modal-input-wrap input,
+.error-guide-message,
+.search-guide,
+.option:hover,
+path,
+button {
+	transition: all 0.2s;
+}
+
+.pagination__button-wrap {
+	display: flex;
+    justify-content: flex-end;
+	margin-top: 0.3rem;
+}
+
+.download-button {
+	border-radius: 0.5rem;
+    border: 1px solid #606267;
+	background-color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    justify-content: center;
+    width: 9rem;
+    height: 2.4rem;
+}
+
+.download-button span {
+	color: #606267;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* 테이블 스타일 */
+
+.table-padding-wrap {
+	margin-top: 0.3rem;
+	position: relative;
+	z-index: 0;
+}
+
+.table-padding-right {
+	position: absolute;
+    right: 0.9rem;
+    top: 0;
+    width: 4rem;
+    height: calc(100% - 1rem);
+    background-color: #fff;
+}
+
+.table-padding-bottom {
+	position: absolute;
+    bottom: 0.9rem;
+    left: 0;
+    width: calc(100% - 1rem);
+    height: 4rem;
+    background-color: #fff;
+}
+
+.table-wrap {
+	width: 100%;
+	height: 26.5rem;
+	overflow: scroll;
+	padding-right: 4rem;
+	padding-bottom: 4rem;
+}
+
+.common-table-style {
+	table-layout: fixed;
+	min-width: 121rem;
+}
+
+.common-table-style td  {
+	border: 1px solid var(--color-table-border);
+	border-top: 1px dotted #000;
+	border-bottom: 1px dotted #000;
+	vertical-align: middle;
+	text-align: center;
+	padding: 0 2.5rem;
+	white-space: nowrap;
+}
+
+.common-table-style th {
+	background-color: var(--color-point-blue);
+	height: 4rem;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid var(--color-table-border);
+	min-width: 11rem;
+	color: #fff;
+	padding: 0 1rem;
+	font-size: 1.2rem;
+	white-space: nowrap;
+}
+
+.common-table-style tbody tr {
+	background-color: var(--color-bg);
+	height: 3.5rem;
+	font-size: 1rem;
+}
+
+.common-table-style tbody .active {
+	background-color: var(--color-border-gray);
+}
+
+/* 페이지네이션 스타일 */
+
+.pagination-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 2.4rem;
+	height: 2.5rem;
+}
+
+.spacing-wrap {
+	width: 22rem;
+}
+
+.pagination-wrap > ul {
+	display: flex;
+	align-items: center;
+}
+
+.pagination li:not(:last-child) {
+	margin-right: 0.5rem;
+}
+
+.pagination a {
+	display: block;
+	width: 2.5rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-align: center;
+	color: #000;
+	font-size: 1.2rem;
+}
+
+.pagination li:has(> a) {
+	border-radius: 0.3rem;
+	overflow: hidden;
+	background-color: var(--color-bg-gray);
+}
+
+.pagination li:has(> .pagingActive) {
+	background-color: var(--color-border-gray);
+}
+
+.pagination button {
+	width: 2.5rem;
+	height: 2.5rem;
+	position: relative;
+	vertical-align: middle;
+}
+
+.pagination button img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 1.6rem;
+    height: 1.6rem;
+}
+
+.total-pagination > li > span,
+.select-head {
+	color: var(--color-primary);
+	font-weight: 700;
+}
+
+.total-pagination > li:first-child span {
+	vertical-align: middle;
+}
+
+.total-pagination > li:first-child::after {
+	content: '';
+	display: inline-block;
+	width: 0.1rem;
+	height: 0.8rem;
+	background-color: var(--color-primary);
+}
+
+#totalCount {
+	color: var(--color-primary);
+	margin: 0 0.8rem;
+}
+
+.total-pagination > li:has(> .select-box) {
+	flex-grow: 1;
+	padding-left: 0.8rem ;
+}
+
+.select-box {
+	position: relative;
+}
+
+.select-head {
+	display: flex;
+	align-items: center;
+}
+
+.select-head span {
+	border: 0.1rem solid var(--color-sub-blue-deep);
+	display: inline-flex;
+	width: 6.2rem;
+	height: 1.4rem;
+	background: url(/images/arrow_drop_down.svg) center right 0.3rem no-repeat;
+	background-size: contain;
+	color: var(--color-main-title);
+	margin-right: 0.8rem;
+	align-items: center;
+	justify-content: center;
+	padding-right: 1rem;
+}
+
+.select-head span, .options {
+	font-size: 1.2rem;
+}
+
+.options {
+	border: 1px solid var(--color-border-gray);
+	border-top: 0;
+	position: absolute;
+	top: 93%;
+	left: 0;
+	text-align: center;
+	width: 6.2rem;
+	background-color: #fff;
+	display: none;
+}
+
+.option {
+	height: 1.4rem;
+	color: var(--color-main-title);
+}
+
+.option:hover {
+	background-color: var(--color-border-gray);
+}
+
+/* 체크박스 */
+
+.input-checkbox-label{
+    display:block;
+}
+
+.input-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    vertical-align: middle;
+    height: 1.8rem;
+    width: 1.8rem;
+    background: #fff;
+    border: 0.1rem solid var(--color-table-border);
+    border-radius: 0.2rem; 
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    z-index: 1;
+}
+
+.input-checkbox:checked {
+    background-color: var(--color-sub-blue-deep);
+    background-image: url('/images/input-check-mark.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
+
+/* 폼 스타일 */
+
+.sub-tab__form {
+	border: 1px solid var(--color-border-gray);
+	height: 23rem;
+	padding: 2.5rem 5.5rem;
+}
+
+.sub-tab__form ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem 5rem;
+	margin-bottom: 2rem;
+}
+
+.sub-tab__form li {
+	width: 25rem;
+}
+
+.sub-tab__form label {
+	font-size: 1.2rem;
+	color: #000;
+}
+
+.sub-tab__form b {
+	color: var(--color-text-highlighting);
+}
+
+.sub-tab__form input {
+	border: 1px solid var(--color-border-gray);
+	background-color: var(--color-bg-gray);
+	width: 100%;
+	height: 3rem;
+	margin-top: 0.7rem;
+	padding: 0.3rem 0.9rem;
+	font-size: inherit;
+}
+
+.sub-tab__form input:not([name="dates"]) {
+	text-align: center;
+}
+
+.sub-tab__form input[name="dates"] {
+	background: url(/images/calender-icon.svg) center right 0.9rem no-repeat;
+	background-size: 1.4rem;
+	font-size: inherit;
+}
+
+.sub-tab__form .required,
+.sub-tab__form input[name="dates"].required {
+	background-color: var(--color-input-error);
+}
+
+.sub-tab__form input:disabled,
+.sub-tab__form input[name="dates"]:disabled {
+	border: 1px solid var(--color-modal-option);
+	background-color: var(--color-modal-option);
+	color: var(--color-table-border);
+}
+
+label:has(input:disabled) > b {
+	display: none;
+}
+
+.search-guide-wrap {
+	min-height: 1.1rem;
+	margin-top: 0.9rem;
+}
+
+.search-guide {
+	display: none;
+	font-size: 1.2rem;
+	color: var(--color-input-error);
+	text-align: center;
+}
+
+.sub-tab__form button {
+	width: 19rem;
+	height: 3rem;
+	border-radius: 0.8rem;
+	background-color: var(--color-sub-blue-deep);
+	color: #fff;
+	font-size: inherit;
+	font-weight: 600;
+	display: block;
+	margin: 0 auto;
+}
+
+.sub-tab__form button:disabled {
+	background-color: var(--color-BO-gray-3);
+}

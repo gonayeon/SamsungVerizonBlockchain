@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>VZ - ASN</title>
+
+    <link rel="stylesheet" href="../static/css/common/common.css">
+    <link rel="stylesheet" href="../static/css/asn/asn.css">
+
+    <script src="../static/js/library/jquery-3.7.1.min.js"></script>
+    <script src="../static/js/library/moment.min.js"></script>
+    <script src="../static/js/library/daterangepicker.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1 class="header__logo-wrap"></h1>
+            <h2 class="header__title">Samsung VZW JIT Blockchain Data Monitoring Portal</h2>
+        </header>
+
+        <section class="contents__wrap">
+            <div class="contents__tab-wrap">
+                <ul class="contents__menu-tab select-wrap">
+                    <li id="tab_asn"><a href="/asn">ASN</a></li>
+                    <li id="tab_3pl-gr"><a href="/3pl-gr">3PL GR</a></li>
+                    <li id="tab_3pl-gi"><a href="/3pl-gi">3PL GI</a></li>
+                    <li id="tab_inventory"><a href="/inventory">Inventory</a></li>
+                    <li id="tab_sellout"><a href="/sellout">VZW<br>Store Sellout</a></li>
+                    <li id="tab_admin" sec:authorize="hasAuthority('ADMIN')">
+                        <a href="#">Admin</a>
+                        <ul class="admin-page-list">
+                            <li onclick="location.href='/admin/user-management'">User</li>
+                            <li onclick="location.href='/admin/access-log'">Access Log</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="contents__button-wrap">
+                    <a href="../static/manual/manual.pdf" target="blank" class="common-btn-style-underline">
+                        <span>Manual</span>
+                    </a>
+                    <button class="common-btn-style-underline" type="button" onclick="userProfileModalOn();"> <!--수정필요-->
+                        <span>User Profile</span>
+                    </button>
+                    <button class="common-btn-style-underline" onclick="location.href='/logout'">
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="contents__inner">
+                <div class="sub-tab__wrap">
+                    <ul class="sub-tab select-wrap" id="asn-tab">
+                        <li id="asn-tab-do" class="selected" onclick="selectAsnTab(this);"><span>Delivery Order List</span></li>
+                        <li id="asn-tab-pallet" onclick="selectAsnTab(this);"><span>Pallet List</span></li>
+                        <li id="asn-tab-imei" onclick="selectAsnTab(this);"><span>IMEI List</span></li>
+                    </ul>
+                    <form class="sub-tab__form" id="asn-search-condition">
+                        <ul>
+                            <li>
+                                <label>
+                                    Ship Date&nbsp;&nbsp;<b>&#42; Required</b><br>
+                                    <input type="text" name="dates" id="search-condition_shipDate" autocomplete="off" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    Inb DO. ID&nbsp;&nbsp;<b>&#42; Required</b><br>
+                                    <input type="text" id="search-condition_deliveryId" autocomplete="off" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    SEA SKU<br>
+                                    <input type="text" id="search-condition_seaSku" autocomplete="off">
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    VZW SKU<br>
+                                    <input type="text" id="search-condition_vzwSku" autocomplete="off">
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    PALLET ID<br>
+                                    <input type="text"id="search-condition_palletId" autocomplete="off">
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    IMEI<br>
+                                    <input type="text" id="search-condition_imei" autocomplete="off">
+                                </label>
+                            </li>
+                        </ul>
+                        <button id="asn-do-search-button" type="button">Search</button>
+                        <div class="search-guide-wrap">
+                            <p class="search-guide" id="error-message"></p>
+                        </div>
+                    </form>
+                </div>
+            
+                <div class="pagination__button-wrap">
+                    <button id="exportExcelButton" class="download-button" type="button" disabled>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.1712 18.0001H12.5261L10.3348 15.809C10.2281 15.7028 10.1434 15.5765 10.0855 15.4376C10.0275 15.2986 9.99762 15.1496 9.99727 14.999C9.99692 14.8485 10.0262 14.6994 10.0835 14.5602C10.1408 14.421 10.2249 14.2946 10.3311 14.1879C10.4373 14.0812 10.5636 13.9962 10.7025 13.9382C10.8415 13.8803 10.9904 13.8504 11.1409 13.85C11.2915 13.8497 11.4407 13.8791 11.5799 13.9364C11.7191 13.9937 11.8457 14.0777 11.9524 14.1839L13.8574 16.0903V8.63763C13.8594 8.3357 13.9805 8.04684 14.1945 7.8338C14.4085 7.62076 14.6979 7.5009 14.9999 7.50024V17.1078C15.0076 17.3359 14.9249 17.5576 14.7696 17.7249C14.6143 17.8921 14.3992 17.991 14.1712 18.0001ZM10.7599 18.0001H0.827346C0.600555 17.9875 0.387511 17.8874 0.233321 17.7206C0.0791308 17.5538 -0.00413445 17.3336 0.0010823 17.1066V0.892883C-0.00737768 0.664927 0.074808 0.442709 0.229659 0.275208C0.38451 0.107706 0.599428 0.00845387 0.827346 -0.000976562H10.8336L14.9999 4.49915V6.24902C14.3659 6.25035 13.7581 6.5028 13.31 6.95123C12.8618 7.39966 12.6096 8.00759 12.6087 8.6416V13.1027C12.2688 12.8413 11.8652 12.6756 11.4397 12.6226C11.0142 12.5697 10.5822 12.6314 10.1886 12.8015L8.50114 10.1977L10.8348 6.59906H8.83485L7.50108 8.65533L6.16731 6.59906H4.16734L6.50117 10.1977L4.16734 13.7991H6.16731L7.50108 11.7416L8.83485 13.7991H9.07365C8.86321 14.1631 8.75193 14.5761 8.75108 14.9966C8.75009 15.3111 8.81152 15.6225 8.9319 15.913C9.05228 16.2036 9.22925 16.4675 9.45238 16.6891L10.7587 17.9952L10.7599 18.0001Z" fill="#606267"/>
+                            <path d="M15 20C14.8498 20.0003 14.7009 19.9708 14.5621 19.9133C14.4233 19.8558 14.2973 19.7713 14.1913 19.6649L10.3349 15.8087C10.2284 15.7027 10.144 15.5767 10.0865 15.4379C10.029 15.2991 9.99966 15.1502 10 15C10.0007 14.6968 10.121 14.4062 10.3349 14.1913C10.5496 13.9771 10.8404 13.8568 11.1436 13.8568C11.4469 13.8568 11.7379 13.9771 11.9525 14.1913L13.8574 16.0962V8.64258C13.8574 8.33957 13.9778 8.04904 14.192 7.83478C14.4063 7.62052 14.697 7.5 15 7.5C15.303 7.5 15.5935 7.62052 15.8078 7.83478C16.0221 8.04904 16.1424 8.33957 16.1424 8.64258V16.0974L18.0487 14.1913C18.2632 13.9768 18.5541 13.8562 18.8574 13.8562C19.1608 13.8562 19.4518 13.9768 19.6663 14.1913C19.8795 14.4062 19.9991 14.6967 19.9991 14.9994C19.9991 15.3021 19.8795 15.5926 19.6663 15.8075L15.8087 19.6649C15.5935 19.8784 15.3031 19.9988 15 20Z" fill="#606267"/>
+                        </svg>
+                        <span>Download</span>
+                    </button>
+                </div>
+            
+                <div class="table-padding-wrap">
+                    <div class="table-wrap" id="asnListArea"></div>
+                    <div class="table-padding-right"></div>
+                    <div class="table-padding-bottom"></div>
+                </div>
+            
+                <div class="pagination-wrap">
+                    <div class="spacing-wrap"></div>
+            
+                    <ul class="pagination" id="paginationArea"></ul>
+            
+                    <ul class="total-pagination">
+                        <li>
+                            <span>Total<b id="totalCount">00,000</b></span>
+                        </li>
+            
+                        <li>
+                            <div class="select-box">
+                                <div class="select-head">
+                                    <span id="pageSize"></span>per page
+                                </div>
+                                <ul class="options">
+                                    <li class="option">10</li>
+                                    <li class="option">20</li>
+                                    <li class="option">100</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modalArea"></div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+.admin-content-top {
+    height: 28.6rem;
+    margin-bottom: 1.6rem;
+    position: relative;
+    z-index: 0;
+}
+
+.admin-content-top p {
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--color-title);
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.admin-content-top .button-wrap {
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.user-manage-button-style {
+    border: 0.1rem solid var(--color-border-gray);
+    border-radius: 1rem;
+    width: 10rem;
+    height: 3.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.1rem;
+    margin-left: 1rem;
+}
+
+.user-manage-button-style svg {
+    width: 2.4rem;
+    height: auto;
+}
+
+.user-manage-button-style span {
+    color: var(--color-title);
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.user-manage-button-style:disabled {
+    background-color: var(--color-tab-font);
+}
+
+.user-manage-button-style:disabled span {
+    color: var(--color-table-border);
+}
+
+.user-manage-button-style:disabled path {
+    fill: var(--color-table-border);
+}
