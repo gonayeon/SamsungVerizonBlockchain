@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VZ - ASN</title>
 
     <link rel="stylesheet" href="static/css/common/common.css">
@@ -9,7 +11,9 @@
     <script src="static/js/library/jquery-3.7.1.min.js"></script>
     <script src="static/js/library/moment.min.js"></script>
     <script src="static/js/library/daterangepicker.js"></script>
+    <script src="static/js/common/common.js"></script>
     <script src="static/js/common/modal.js"></script>
+    <script src="static/js/asn.js"></script>
 </head>
 <body>
     <main>
@@ -40,7 +44,7 @@
                     <button class="common-btn-style-underline" type="button" onclick="userProfileModalOn();">
                         <span>User Profile</span>
                     </button>
-                    <button class="common-btn-style-underline">
+                    <button class="common-btn-style-underline" onclick="location.href='index.html'">
                         <span>Logout</span>
                     </button>
                 </div>
@@ -49,9 +53,9 @@
             <div class="contents__inner">
                 <div class="sub-tab__wrap">
                     <ul class="sub-tab select-wrap" id="asn-tab">
-                        <li id="asn-tab-do" class="selected" onclick="selectAsnTab(this);"><span>Delivery Order List</span></li>
-                        <li id="asn-tab-pallet" onclick="selectAsnTab(this);"><span>Pallet List</span></li>
-                        <li id="asn-tab-imei" onclick="selectAsnTab(this);"><span>IMEI List</span></li>
+                        <li id="asn-tab-do" class="selected"><span>Delivery Order List</span></li>
+                        <li id="asn-tab-pallet"><span>Pallet List</span></li>
+                        <li id="asn-tab-imei"><span>IMEI List</span></li>
                     </ul>
                     <form class="sub-tab__form" id="asn-search-condition">
                         <ul>
@@ -129,7 +133,83 @@
                                     <th scope="col">Material Description</th>
                                 </tr>
                             </thead>
-                            <tbody id="asn-table-body"></tbody>
+                            <tbody id="asn-table-body">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     <div class="table-padding-right"></div>
@@ -139,11 +219,26 @@
                 <div class="pagination-wrap">
                     <div class="spacing-wrap"></div>
             
-                    <ul class="pagination" id="paginationArea"></ul>
+                    <ul class="pagination" id="paginationArea">
+                        <li><button type="button"><img src="static/images/arrow-double-left.svg" alt="startPage"></button></li>
+                        <li><button type="button"><img src="static/images/arrow-left.svg" alt="prevPage"></button></li>
+                        <li><a class="pagingActive">1</a></li>
+                        <li><a>2</a></li>
+                        <li><a>3</a></li>
+                        <li><a>4</a></li>
+                        <li><a>5</a></li>
+                        <li><a>6</a></li>
+                        <li><a>7</a></li>
+                        <li><a>8</a></li>
+                        <li><a>9</a></li>
+                        <li><a>10</a></li>
+                        <li><button type="button"><img src="static/images/arrow-right.svg" alt="nextPage"></button></li>
+                        <li><button type="button"><img src="static/images/arrow-double-right.svg" alt="endPage"></button></li>
+                    </ul>
             
                     <ul class="total-pagination">
                         <li>
-                            <span>Total<b id="totalCount">00,000</b></span>
+                            Total<span id="totalCount">00,000</span>
                         </li>
             
                         <li>

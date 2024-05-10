@@ -1,7 +1,4 @@
-const errorTypes = {
-    "LOGIN_NON_ACTIVE" : "LOGIN_NON_ACTIVE",
-    "EXPIRE_PASSWORD" : "EXPIRE_PASSWORD"
-}
+
 
 // ======= Modal On ===================================================================================================
 
@@ -16,7 +13,7 @@ function userAddModalOn() {
                 
                 <div class="modal-top">
                     <button type="button" class="modal-close-button">
-                        <img src="/images/modal-close-mark.svg" alt="close modal button">
+                        <img src="static/images/modal-close-mark.svg" alt="close modal button">
                     </button>
                 </div>        
                 
@@ -47,36 +44,25 @@ function userAddModalOn() {
                                 <div class="modal-selected">
                                     <span id="role"></span>
                                 </div>
-                                <ul class="modal-options">`;
-
-                    userRoles.forEach(userRole => {
-                        html += `<li class="option">${userRole}</li>`
-                    })
-
-                    html +=     `</ul>
-                            </div>
-                        </li>
-                    </ul>
-                                        
-                    <div class="modal-validation-guide">
+                                <ul class="modal-options">
+                                    <li class="option"></li>
+                                </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="modal-validation-guide">
                         <p id="error-message" class="error-guide-message"></p>    
                     </div>
-                    <button type="button" class="common-btn-style-blue-deep common-button-frame" onclick="addUser();">Save</button>
+                    <button type="button" class="common-btn-style-blue-deep common-button-frame modal-close-button">Save</button>
                 </div>
             </div>
         </div>`;
 
     modalArea.innerHTML= html;
     $('#userAddModal').show();
-
-    // modal select event
-    modalSelectOptionEvent("ADD");
-
-    // modal Validation Condition Clear
-    modalValidationConditionClear('#userAddModal input[type="text"]', '#userAddModal #error-message');
-
-    // modal close
-    modalCloseEvent('#userAddModal');
+    $('.modal-close-button').click(function(){
+        $('#userAddModal').hide();
+    });
 }
 
 // User management - User edit Modal

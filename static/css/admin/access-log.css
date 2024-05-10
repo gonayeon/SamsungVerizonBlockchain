@@ -1,6 +1,10 @@
 .sub-tab__form {
-    height: 18rem;
-    margin: 4rem 0 5.3rem;
+    height: 19rem;
+    margin: 4rem 0 6.5rem;
+}
+
+.sub-tab__form ul {
+    margin-bottom: 4rem;
 }
 
 .common-table-style thead th:first-child,

@@ -3,8 +3,12 @@
 }
 
 .sub-tab__form {
-    height: 18rem;
-    margin-bottom: 5.3rem;
+    height: 19rem;
+    margin-bottom: 6.5rem;
+}
+
+.sub-tab__form ul {
+    margin-bottom: 4rem;
 }
 
 .page-title {

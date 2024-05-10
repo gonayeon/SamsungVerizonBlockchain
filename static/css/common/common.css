@@ -128,7 +128,7 @@ button {
 .pagination__button-wrap {
 	display: flex;
     justify-content: flex-end;
-	margin-top: 0.3rem;
+	margin: 2.5rem 0 1.6rem;
 }
 
 .download-button {
@@ -227,7 +227,7 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: 2.4rem;
+	margin-top: 4rem;
 	height: 2.5rem;
 }
 
@@ -286,15 +286,11 @@ button {
 	font-weight: 700;
 }
 
-.total-pagination > li:first-child span {
-	vertical-align: middle;
-}
-
 .total-pagination > li:first-child::after {
 	content: '';
 	display: inline-block;
 	width: 0.1rem;
-	height: 0.8rem;
+	height: 1rem;
 	background-color: var(--color-primary);
 }
 
@@ -314,20 +310,19 @@ button {
 
 .select-head {
 	display: flex;
-	align-items: center;
 }
 
-.select-head span {
+.select-head #pageSize {
 	border: 0.1rem solid var(--color-sub-blue-deep);
 	display: inline-flex;
+	justify-content: center;
 	width: 6.2rem;
-	height: 1.4rem;
-	background: url(/images/arrow_drop_down.svg) center right 0.3rem no-repeat;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	background: url(/static/images/arrow_drop_down.svg) center right 0.3rem no-repeat;
 	background-size: contain;
 	color: var(--color-main-title);
 	margin-right: 0.8rem;
-	align-items: center;
-	justify-content: center;
 	padding-right: 1rem;
 }
 
@@ -339,7 +334,7 @@ button {
 	border: 1px solid var(--color-border-gray);
 	border-top: 0;
 	position: absolute;
-	top: 93%;
+	top: 100%;
 	left: 0;
 	text-align: center;
 	width: 6.2rem;
@@ -349,6 +344,7 @@ button {
 
 .option {
 	height: 1.4rem;
+	line-height: 1.4rem;
 	color: var(--color-main-title);
 }
 
@@ -382,7 +378,7 @@ button {
 
 .input-checkbox:checked {
     background-color: var(--color-sub-blue-deep);
-    background-image: url('/images/input-check-mark.svg');
+    background-image: url('/static/images/input-check-mark.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto;
@@ -431,7 +427,7 @@ button {
 }
 
 .sub-tab__form input[name="dates"] {
-	background: url(/images/calender-icon.svg) center right 0.9rem no-repeat;
+	background: url(/static/images/calender-icon.svg) center right 0.9rem no-repeat;
 	background-size: 1.4rem;
 	font-size: inherit;
 }
